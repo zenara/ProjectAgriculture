@@ -1,0 +1,156 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 15, 2016, 3:44:34 PM
+    Author     : Chathurika Senani
+*/
+
+#red{
+    width: 100%;
+    height: 5px;
+    background-color: #cc3366;
+}
+
+.navbar{
+    margin-bottom: 0;
+    background-color: #00cc99;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+#leaf{
+   
+    width: 100%;
+    height: 90%;
+}
+
+#adminLogin{
+    top: 100px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+        position: relative;
+}
+
+#addai{
+    top: 80px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+        position: relative;
+}
+
+.btn-round{
+    border-radius: 90px;
+    color: white;
+    background-color: #ff3366;
+    font-size: 15px;
+    
+}
+.btn-round:hover{
+    color: whitesmoke;
+    box-shadow: lightgrey;
+}
+
+.btn-round:active{
+    background-color: #ff3366;
+}
+
+#slides_control > div{
+  height: 200px;
+}
+img{
+  margin:auto;
+  width: 400px;
+}
+#slides_control {
+  position:absolute;
+  width: 400px;
+  left:50%;
+  top:20px;
+ margin-left:-200px;
+}
+
+#demo{
+    
+}
+
+.menu-top{
+    width: 100%;
+    height: 50px;
+    box-shadow: 0px 1px 1px gainsboro;
+    cursor: pointer;
+}
+.login:hover{
+    border-bottom: 5px solid #339900;
+}
+
+.login{
+    float: left;
+    border: none;
+    padding: 13px;
+    background-color: #003300;
+    color: white;
+    border-bottom: 5px solid #003300;
+}
+.bottom-bar{
+    box-shadow: 0px 1px 10px gainsboro;
+    padding: 10px;
+}
+.bottom-menu-item{
+    float: left;
+    padding: 15px;
+}
+
+.made-by{
+    float: right;
+    padding: 15px;
+}
+
+.head-line{
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#exampleInputAmount{
+    height: 40px;
+    width: 400px;
+    
+}
+
+#buttonSearch{
+    background-color: #31b0d5;
+    color: white;
+}
+
+
+
+.login-div{
+    margin: 0px auto;
+    padding: 20px;
+    width: 300px;
+    height: 500px;
+}
+
+.text-f{
+    border: 0px;
+    border-radius: 0px;
+    margin: 10px;
+}
+.member-login{
+    font-size: 25px;
+    font-family: sans-serif;
+    
+}
+
+
+.error-msg{
+    width: 100%;
+    padding: 10px;
+    background-color: #ebccd1;
+    border: 1px solid sienna;
+}
