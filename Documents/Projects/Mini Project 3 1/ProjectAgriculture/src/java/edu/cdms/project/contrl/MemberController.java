@@ -9,7 +9,9 @@ import edu.cdms.project.dto.AdminLoginDTO;
 import edu.cdms.project.orm.AdaZone;
 import edu.cdms.project.orm.Admin;
 import edu.cdms.project.orm.AiList;
+import edu.cdms.project.orm.Ascenter;
 import edu.cdms.project.orm.District;
+import edu.cdms.project.orm.Ds;
 import edu.cdms.project.service.BranchService;
 import edu.cdms.project.service.MemberService;
 import java.util.ArrayList;
@@ -54,10 +56,18 @@ public class MemberController {
                 ArrayList<AdaZone> adaZones=branchService.getADAList();
                 map.addAttribute("ada", adaZone);
                 map.addAttribute("adas", adaZones);
-                
                 District district=new District();
                 map.addAttribute("district", district);
-                
+                ArrayList<District> districts=branchService.getDistrictList();
+                map.addAttribute("districts", districts);
+                Ds ds=new Ds();                
+                map.addAttribute("ds", ds);
+                ArrayList<Ds> dses=branchService.getDsList();
+                map.addAttribute("dses", dses);
+                Ascenter ascenter=new Ascenter();
+                map.addAttribute("ascenter", ascenter);
+                ArrayList<Ascenter> ascenters=branchService.getAscenterList();
+                map.addAttribute("centers", ascenters);
                 return "addAI";
             }
         }

@@ -35,8 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ds.findByDsId", query = "SELECT d FROM Ds d WHERE d.dsId = :dsId"),
     @NamedQuery(name = "Ds.findByDsName", query = "SELECT d FROM Ds d WHERE d.dsName = :dsName")})
 public class Ds implements Serializable {
-    @OneToMany(mappedBy = "dsId", fetch = FetchType.LAZY)
-    private List<AiList> aiListList;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -47,6 +45,8 @@ public class Ds implements Serializable {
     @Size(max = 50)
     @Column(name = "dsName")
     private String dsName;
+    @OneToMany(mappedBy = "dsId", fetch = FetchType.LAZY)
+    private List<AiList> aiListList;
     @OneToMany(mappedBy = "dsId", fetch = FetchType.LAZY)
     private List<Ascenter> ascenterList;
     @JoinColumn(name = "districtId", referencedColumnName = "districtId")
@@ -74,6 +74,15 @@ public class Ds implements Serializable {
 
     public void setDsName(String dsName) {
         this.dsName = dsName;
+    }
+
+    @XmlTransient
+    public List<AiList> getAiListList() {
+        return aiListList;
+    }
+
+    public void setAiListList(List<AiList> aiListList) {
+        this.aiListList = aiListList;
     }
 
     @XmlTransient
@@ -116,15 +125,6 @@ public class Ds implements Serializable {
     @Override
     public String toString() {
         return "edu.cdms.project.orm.Ds[ dsId=" + dsId + " ]";
-    }
-
-    @XmlTransient
-    public List<AiList> getAiListList() {
-        return aiListList;
-    }
-
-    public void setAiListList(List<AiList> aiListList) {
-        this.aiListList = aiListList;
     }
     
 }

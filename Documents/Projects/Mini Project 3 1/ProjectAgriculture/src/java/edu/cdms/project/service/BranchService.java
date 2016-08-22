@@ -6,7 +6,9 @@
 package edu.cdms.project.service;
 
 import edu.cdms.project.orm.AdaZone;
+import edu.cdms.project.orm.Ascenter;
 import edu.cdms.project.orm.District;
+import edu.cdms.project.orm.Ds;
 import java.util.ArrayList;
 
 /**
@@ -28,4 +30,17 @@ public interface BranchService {
     
     public ArrayList<District> getDistrictList();
     
+    
+    public boolean addDS(Ds ds);
+    
+    public Ds getLastDs();
+    
+    public ArrayList<Ds> getDsList();
+    
+    
+    public Ascenter getLastAscenter();
+
+    public boolean addAscenter(Ascenter ascenter);
+    
+    public ArrayList<Ascenter> getAscenterList();
 }

@@ -7,7 +7,9 @@ package edu.cdms.project.service.impl;
 
 import edu.cdms.project.dao.BranchDAO;
 import edu.cdms.project.orm.AdaZone;
+import edu.cdms.project.orm.Ascenter;
 import edu.cdms.project.orm.District;
+import edu.cdms.project.orm.Ds;
 import edu.cdms.project.service.BranchService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,30 @@ public class BranchServiceImpl implements BranchService{
 
     public ArrayList<District> getDistrictList() {
         return branchDAO.getDistrictList();
+    }
+
+    public Ds getLastDs() {
+        return branchDAO.getLastDs();
+    }
+
+    public boolean addDS(Ds ds) {
+        return branchDAO.addDs(ds);
+    }
+
+    public ArrayList<Ds> getDsList() {
+        return branchDAO.getDsList();
+    }
+
+    public Ascenter getLastAscenter() {
+        return branchDAO.getLastAscenter();
+    }
+
+    public boolean addAscenter(Ascenter ascenter) {
+        return branchDAO.addAscenter(ascenter);
+    }
+
+    public ArrayList<Ascenter> getAscenterList() {
+        return branchDAO.getAscenterList();
     }
     
 }

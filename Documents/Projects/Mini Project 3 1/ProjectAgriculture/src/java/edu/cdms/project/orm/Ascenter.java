@@ -49,9 +49,6 @@ public class Ascenter implements Serializable {
     private List<AiList> aiListList;
     @OneToMany(mappedBy = "ascId", fetch = FetchType.LAZY)
     private List<AiRange> aiRangeList;
-    @JoinColumn(name = "districtId", referencedColumnName = "districtId")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private District districtId;
     @JoinColumn(name = "dsId", referencedColumnName = "dsId")
     @ManyToOne(fetch = FetchType.LAZY)
     private Ds dsId;
@@ -95,14 +92,6 @@ public class Ascenter implements Serializable {
 
     public void setAiRangeList(List<AiRange> aiRangeList) {
         this.aiRangeList = aiRangeList;
-    }
-
-    public District getDistrictId() {
-        return districtId;
-    }
-
-    public void setDistrictId(District districtId) {
-        this.districtId = districtId;
     }
 
     public Ds getDsId() {

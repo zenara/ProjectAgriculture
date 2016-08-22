@@ -47,8 +47,6 @@ public class District implements Serializable {
     private String districtName;
     @OneToMany(mappedBy = "districtId", fetch = FetchType.LAZY)
     private List<AiList> aiListList;
-    @OneToMany(mappedBy = "districtId", fetch = FetchType.LAZY)
-    private List<Ascenter> ascenterList;
     @JoinColumn(name = "adaId", referencedColumnName = "adaId")
     @ManyToOne(fetch = FetchType.LAZY)
     private AdaZone adaId;
@@ -85,15 +83,6 @@ public class District implements Serializable {
 
     public void setAiListList(List<AiList> aiListList) {
         this.aiListList = aiListList;
-    }
-
-    @XmlTransient
-    public List<Ascenter> getAscenterList() {
-        return ascenterList;
-    }
-
-    public void setAscenterList(List<Ascenter> ascenterList) {
-        this.ascenterList = ascenterList;
     }
 
     public AdaZone getAdaId() {

@@ -41,7 +41,7 @@
             
             <br/><label>Divisional Secretarian</label>
             <form:select class="form-control" style="border-radius: 0px" placeholder="Divisional Secretarian" path="ds">
-                <c:forEach items="${ds}" var="result">
+                <c:forEach items="${dses}" var="result">
                     <form:option value="${result.dsId}">${result.dsName}</form:option>
                 </c:forEach>
             </form:select>
@@ -92,6 +92,27 @@
                 <button type="submit">ADD</button>
         </form:form>
                 
+                <form:form action="addDS" method="POST" modelAttribute="ds">
+            <form:select class="form-control" style="border-radius: 0px" placeholder="District" path="districtId">
+                <c:forEach items="${districts}" var="result">
+                    <form:option value="${result.districtId}">${result.districtName}</form:option>
+                </c:forEach>
+            </form:select>
+                <form:input path="dsId" type="hidden" value="0001"></form:input>
+                <form:input path="dsName" placeholder="Divisional Secretarian:"></form:input>
+                <button type="submit">ADD</button>
+        </form:form>
+                
+                <form:form action="addAscenter" method="POST" modelAttribute="ascenter">
+            <form:select class="form-control" style="border-radius: 0px" placeholder="ASCenter" path="dsId">
+                <c:forEach items="${dses}" var="result">
+                    <form:option value="${result.dsId}">${result.dsName}</form:option>
+                </c:forEach>
+            </form:select>
+                <form:input path="ascId" type="hidden" value="0001"></form:input>
+                <form:input path="ascName" placeholder="Divisional Secretarian:"></form:input>
+                <button type="submit">ADD</button>
+        </form:form>
         </div>
         </div>
     </body>

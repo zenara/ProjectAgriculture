@@ -7,7 +7,9 @@ package edu.cdms.project.dao.impl;
 
 import edu.cdms.project.dao.BranchDAO;
 import edu.cdms.project.orm.AdaZone;
+import edu.cdms.project.orm.Ascenter;
 import edu.cdms.project.orm.District;
+import edu.cdms.project.orm.Ds;
 import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -95,6 +97,72 @@ public class BranchDAOImpl implements BranchDAO{
         session.close();
         return false;
     }
+    
+    public ArrayList<Ds> getDsList(){
+        Session session=getSession();
+        session.beginTransaction();
+        Query namedQuery=session.getNamedQuery("Ds.findAll");
+        ArrayList<Ds> dses=(ArrayList<Ds>) namedQuery.list();
+        session.getTransaction().commit();
+        session.close();
+        return dses;
+    }
+
+    public Ds getLastDs() {
+        ArrayList<Ds> dses=getDsList();
+        if(null==dses){
+            dses=new ArrayList<Ds>();
+        }
+        if(dses.size()>0){
+            return dses.get(dses.size()-1);
+        }
+        Ds ds=new Ds();
+        ds.setDsId("000");
+        return ds;
+    }
+
+    public boolean addDs(Ds ds) {
+        Session session=getSession();
+        session.beginTransaction();
+        session.save(ds);
+        session.getTransaction().commit();
+        session.close();
+        return false;
+    }
+    
+    public ArrayList<Ascenter> getAscenterList(){
+        Session session=getSession();
+        session.beginTransaction();
+        Query namedQuery=session.getNamedQuery("Ascenter.findAll");
+        ArrayList<Ascenter> ascenters=(ArrayList<Ascenter>) namedQuery.list();
+        session.getTransaction().commit();
+        session.close();
+        return ascenters;
+    }
+
+    public Ascenter getLastAscenter() {
+        ArrayList<Ascenter> ascenters=getAscenterList();
+        if(null==ascenters){
+            ascenters=new ArrayList<Ascenter>();
+        }
+        if(ascenters.size()>0){
+            return ascenters.get(ascenters.size()-1);
+        }
+        Ascenter ascenter=new Ascenter();
+        ascenter.setAscId("000");
+        return ascenter;
+    }
+
+    public boolean addAscenter(Ascenter ascenter) {
+        Session session=getSession();
+        session.beginTransaction();
+        session.save(ascenter);
+        session.getTransaction().commit();
+        session.close();
+        return false;
+    }
+
+    
     
    
 }
