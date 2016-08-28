@@ -79,7 +79,23 @@ public class MemberController {
     @RequestMapping(value = "/addAI", method = RequestMethod.POST)
     public String addAI(@Valid AiList aiList, ModelMap map){
         memberService.addAI(aiList);
+        AdaZone adaZone=new AdaZone();
         map.addAttribute("AI", aiList);
+        ArrayList<AdaZone> adaZones=branchService.getADAList();
+        map.addAttribute("ada", adaZone);
+        map.addAttribute("adas", adaZones);
+        District district=new District();
+        map.addAttribute("district", district);
+        ArrayList<District> districts=branchService.getDistrictList();
+        map.addAttribute("districts", districts);
+        Ds ds=new Ds();                
+        map.addAttribute("ds", ds);
+        ArrayList<Ds> dses=branchService.getDsList();
+        map.addAttribute("dses", dses);
+        Ascenter ascenter=new Ascenter();
+        map.addAttribute("ascenter", ascenter);
+        ArrayList<Ascenter> ascenters=branchService.getAscenterList();
+        map.addAttribute("centers", ascenters);
         return "addAI";
     }
     

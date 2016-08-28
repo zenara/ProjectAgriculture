@@ -78,7 +78,7 @@
             <form:form action="addAda" method="POST" modelAttribute="ada">
                 <form:input path="adaId" type="hidden" value="0001"></form:input>
                 <form:input path="adaName" placeholder="ADA Name:"></form:input>
-                <button type="submit">ADD</button>
+                <button type="submit" class="btn btn-info">ADD</button>
             </form:form>
                 
         <form:form action="addDistrict" method="POST" modelAttribute="district">
