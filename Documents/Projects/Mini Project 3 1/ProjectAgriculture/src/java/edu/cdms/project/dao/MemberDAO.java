@@ -6,7 +6,8 @@
 package edu.cdms.project.dao;
 
 import edu.cdms.project.orm.Admin;
-import edu.cdms.project.orm.AiList;
+import edu.cdms.project.orm.Ailist;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,5 +16,7 @@ import edu.cdms.project.orm.AiList;
 public interface MemberDAO {
     public Admin getAdmin(String adminUName);
 
-    public boolean addAI(AiList aiList);
+    public boolean addAI(Ailist aiList);
+
+    public ArrayList<Ailist> getAIList();
 }

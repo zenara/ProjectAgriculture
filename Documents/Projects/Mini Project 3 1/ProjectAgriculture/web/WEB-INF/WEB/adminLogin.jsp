@@ -21,22 +21,22 @@
     </head>
     <body>
         <jsp:include page="../../PAGES/top.jsp"></jsp:include>
-        <div class="col-md-4"></div>
-        <div id="adminLogin" class="col-md-3">
-            
-           <c:if test="${msg eq 'error'}">
-               <span class="btn btn-block error-msg" style="color: #c7254e"><b>Authentication Failed!</b></span>
-        </c:if><br/> 
-        <form:form action="checkadmin" method="POST" modelAttribute="adminlogin">
-            <label>Username</label>
-            <form:input class="form-control" path="username" placeholder="Username"></form:input>
-            <label>Password</label>
-            <form:input class="form-control" path="password" placeholder="Password"></form:input><br/>
-            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;LOGIN</button>
-        </form:form>
-        <br/>
-            
-            
+            <div class="col-md-4"></div>
+            <div id="adminLogin" class="col-md-3">
+
+            <c:if test="${msg eq 'error'}">
+                <span class="btn btn-block alert-warning" style="color: #c7254e"><b>Authentication Failed!</b></span>
+            </c:if><br/> 
+            <form:form action="checkadmin" method="POST" modelAttribute="adminlogin">
+                <label>Username</label>
+                <form:input class="form-control" path="username" placeholder="Username"></form:input>
+                    <label>Password</label>
+                <form:input class="form-control" path="password" type="password" placeholder="Password"></form:input><br/>
+                    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;LOGIN</button>
+            </form:form>
+            <br/>
+
+
         </div>
         <div class="col-md-4"></div>
     </body>

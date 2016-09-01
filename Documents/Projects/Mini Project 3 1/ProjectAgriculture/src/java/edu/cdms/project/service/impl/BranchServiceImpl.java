@@ -6,7 +6,7 @@
 package edu.cdms.project.service.impl;
 
 import edu.cdms.project.dao.BranchDAO;
-import edu.cdms.project.orm.AdaZone;
+import edu.cdms.project.orm.Adazone;
 import edu.cdms.project.orm.Ascenter;
 import edu.cdms.project.orm.District;
 import edu.cdms.project.orm.Ds;
@@ -25,15 +25,12 @@ public class BranchServiceImpl implements BranchService{
     @Autowired
     private BranchDAO branchDAO;
     
-    public boolean addAda(AdaZone adaZone) {
+    public boolean addAda(Adazone adaZone) {
         return branchDAO.addAda(adaZone);
     }
 
-    public AdaZone getLastADA() {
-        return branchDAO.getLastADA();
-    }
 
-    public ArrayList<AdaZone> getADAList() {
+    public ArrayList<Adazone> getADAList() {
         return branchDAO.getADAList();
     }
     
@@ -41,18 +38,12 @@ public class BranchServiceImpl implements BranchService{
         return branchDAO.addDistrict(district);
     }
 
-    public District getLastDistrict() {
-        return branchDAO.getLastDistrict();
-    }
 
     public ArrayList<District> getDistrictList() {
         return branchDAO.getDistrictList();
     }
 
-    public Ds getLastDs() {
-        return branchDAO.getLastDs();
-    }
-
+    
     public boolean addDS(Ds ds) {
         return branchDAO.addDs(ds);
     }
@@ -61,9 +52,6 @@ public class BranchServiceImpl implements BranchService{
         return branchDAO.getDsList();
     }
 
-    public Ascenter getLastAscenter() {
-        return branchDAO.getLastAscenter();
-    }
 
     public boolean addAscenter(Ascenter ascenter) {
         return branchDAO.addAscenter(ascenter);

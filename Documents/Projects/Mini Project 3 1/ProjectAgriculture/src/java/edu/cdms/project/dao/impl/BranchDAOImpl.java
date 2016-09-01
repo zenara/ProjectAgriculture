@@ -6,7 +6,7 @@
 package edu.cdms.project.dao.impl;
 
 import edu.cdms.project.dao.BranchDAO;
-import edu.cdms.project.orm.AdaZone;
+import edu.cdms.project.orm.Adazone;
 import edu.cdms.project.orm.Ascenter;
 import edu.cdms.project.orm.District;
 import edu.cdms.project.orm.Ds;
@@ -31,7 +31,7 @@ public class BranchDAOImpl implements BranchDAO{
         return sessionFactory.openSession();
     }
     
-    public boolean addAda(AdaZone adaZone) {
+    public boolean addAda(Adazone adaZone) {
         Session session=getSession();
         session.beginTransaction();
         session.save(adaZone);
@@ -40,30 +40,17 @@ public class BranchDAOImpl implements BranchDAO{
         return false;
     }
     
-    public ArrayList<AdaZone> getADAList(){
+    public ArrayList<Adazone> getADAList(){
         Session session=getSession();
         session.beginTransaction();
         
-        Query namedQuery=session.getNamedQuery("AdaZone.findAll");
-        ArrayList<AdaZone> adaZones=(ArrayList<AdaZone>) namedQuery.list();
+        Query namedQuery=session.getNamedQuery("Adazone.findAll");
+        ArrayList<Adazone> adaZones=(ArrayList<Adazone>) namedQuery.list();
         session.getTransaction().commit();
         session.close();
         return adaZones;
     }
 
-    public AdaZone getLastADA() {
-        ArrayList<AdaZone> adaZones=getADAList();
-        if(null==adaZones){
-            adaZones=new ArrayList<AdaZone>();
-        }
-        if(adaZones.size()>0){
-            return adaZones.get(adaZones.size()-1);
-        }
-        AdaZone adaZone=new AdaZone();
-        adaZone.setAdaId("000");
-        return adaZone;
-        
-    }
     
     public ArrayList<District> getDistrictList(){
         Session session=getSession();
@@ -76,18 +63,6 @@ public class BranchDAOImpl implements BranchDAO{
         return districts;
     }
 
-    public District getLastDistrict() {
-        ArrayList<District> districts=getDistrictList();
-        if(null==districts){
-            districts=new ArrayList<District>();
-        }
-        if(districts.size()>0){
-            return districts.get(districts.size()-1);
-        }
-        District district=new District();
-        district.setDistrictId("000");
-        return district;
-    }
 
     public boolean addDistrict(District district) {
         Session session=getSession();
@@ -106,19 +81,6 @@ public class BranchDAOImpl implements BranchDAO{
         session.getTransaction().commit();
         session.close();
         return dses;
-    }
-
-    public Ds getLastDs() {
-        ArrayList<Ds> dses=getDsList();
-        if(null==dses){
-            dses=new ArrayList<Ds>();
-        }
-        if(dses.size()>0){
-            return dses.get(dses.size()-1);
-        }
-        Ds ds=new Ds();
-        ds.setDsId("000");
-        return ds;
     }
 
     public boolean addDs(Ds ds) {
@@ -140,18 +102,6 @@ public class BranchDAOImpl implements BranchDAO{
         return ascenters;
     }
 
-    public Ascenter getLastAscenter() {
-        ArrayList<Ascenter> ascenters=getAscenterList();
-        if(null==ascenters){
-            ascenters=new ArrayList<Ascenter>();
-        }
-        if(ascenters.size()>0){
-            return ascenters.get(ascenters.size()-1);
-        }
-        Ascenter ascenter=new Ascenter();
-        ascenter.setAscId("000");
-        return ascenter;
-    }
 
     public boolean addAscenter(Ascenter ascenter) {
         Session session=getSession();
@@ -161,8 +111,6 @@ public class BranchDAOImpl implements BranchDAO{
         session.close();
         return false;
     }
-
-    
-    
+      
    
 }

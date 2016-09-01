@@ -8,8 +8,9 @@ package edu.cdms.project.service.impl;
 import edu.cdms.project.dao.MemberDAO;
 import edu.cdms.project.dto.AdminLoginDTO;
 import edu.cdms.project.orm.Admin;
-import edu.cdms.project.orm.AiList;
+import edu.cdms.project.orm.Ailist;
 import edu.cdms.project.service.MemberService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,12 @@ public class MemberServiceImpl implements MemberService{
         return memberDAO.getAdmin(adminLoginDTO.getUsername());
     }
 
-    public boolean addAI(AiList aiList) {
+    public boolean addAI(Ailist aiList) {
         return memberDAO.addAI(aiList);
+    }
+
+    public ArrayList<Ailist> getAIList() {
+        return memberDAO.getAIList();
     }
     
 }

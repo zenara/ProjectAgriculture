@@ -6,9 +6,8 @@
 package edu.cdms.project.dao.impl;
 
 import edu.cdms.project.dao.MemberDAO;
-import edu.cdms.project.dto.AdminLoginDTO;
 import edu.cdms.project.orm.Admin;
-import edu.cdms.project.orm.AiList;
+import edu.cdms.project.orm.Ailist;
 import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -42,13 +41,23 @@ public class MemberDAOImpl implements MemberDAO{
         return admin;
     }
 
-    public boolean addAI(AiList aiList) {
+    public boolean addAI(Ailist aiList) {
         Session session=getSession();
         session.beginTransaction();
         session.save(aiList);
         session.getTransaction().commit();
         session.close();
         return false;
+    }
+
+    public ArrayList<Ailist> getAIList() {
+        Session session=getSession();
+        session.beginTransaction();
+        Query namedQuery=session.getNamedQuery("Ailist.findAll");
+        ArrayList<Ailist> aiList=(ArrayList<Ailist>) namedQuery.list();
+        session.getTransaction().commit();
+        session.close();
+        return aiList;
     }
     
 }

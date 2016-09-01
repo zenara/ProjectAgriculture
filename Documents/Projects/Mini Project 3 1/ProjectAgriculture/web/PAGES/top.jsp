@@ -29,7 +29,7 @@
                                 <li class="sub" style="color: #00cc99;letter-spacing: 0px;"><a>Vegetables&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br/>
                             </ul>
                         </li>
-                        <li><a href="#members">MANAGE MEMBERS</a></li>
+                        <li><a href="#staff">OUR STAFF</a></li>
                         <li><a href="#contact">CONTACT</a></li>
                     </ul>
                 </div>

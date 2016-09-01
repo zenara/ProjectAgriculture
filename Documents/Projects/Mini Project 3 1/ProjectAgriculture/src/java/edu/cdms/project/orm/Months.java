@@ -33,91 +33,57 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Months.findAll", query = "SELECT m FROM Months m"),
-    @NamedQuery(name = "Months.findByMonthId", query = "SELECT m FROM Months m WHERE m.monthId = :monthId"),
-    @NamedQuery(name = "Months.findByMonthName", query = "SELECT m FROM Months m WHERE m.monthName = :monthName")})
+    @NamedQuery(name = "Months.findByMonthid", query = "SELECT m FROM Months m WHERE m.monthid = :monthid"),
+    @NamedQuery(name = "Months.findByMonthname", query = "SELECT m FROM Months m WHERE m.monthname = :monthname")})
 public class Months implements Serializable {
-    @OneToMany(mappedBy = "monthId", fetch = FetchType.LAZY)
-    private List<Rainfedpaddy> rainfedpaddyList;
-    @OneToMany(mappedBy = "monthId", fetch = FetchType.LAZY)
-    private List<Minorpaddy> minorpaddyList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "monthId")
-    private Integer monthId;
+    @Column(name = "monthid")
+    private Integer monthid;
     @Size(max = 20)
-    @Column(name = "monthName")
-    private String monthName;
-    @JoinColumn(name = "seasonId", referencedColumnName = "seasonId")
+    @Column(name = "monthname")
+    private String monthname;
+    @JoinColumn(name = "seasonid", referencedColumnName = "seasonid")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Seasons seasonId;
-    @OneToMany(mappedBy = "monthId", fetch = FetchType.LAZY)
+    private Seasons seasonid;
+    @OneToMany(mappedBy = "monthid", fetch = FetchType.LAZY)
+    private List<Rainfedpaddy> rainfedpaddyList;
+    @OneToMany(mappedBy = "monthid", fetch = FetchType.LAZY)
     private List<Majorpaddy> majorpaddyList;
+    @OneToMany(mappedBy = "monthid", fetch = FetchType.LAZY)
+    private List<Minorpaddy> minorpaddyList;
 
     public Months() {
     }
 
-    public Months(Integer monthId) {
-        this.monthId = monthId;
+    public Months(Integer monthid) {
+        this.monthid = monthid;
     }
 
-    public Integer getMonthId() {
-        return monthId;
+    public Integer getMonthid() {
+        return monthid;
     }
 
-    public void setMonthId(Integer monthId) {
-        this.monthId = monthId;
+    public void setMonthid(Integer monthid) {
+        this.monthid = monthid;
     }
 
-    public String getMonthName() {
-        return monthName;
+    public String getMonthname() {
+        return monthname;
     }
 
-    public void setMonthName(String monthName) {
-        this.monthName = monthName;
+    public void setMonthname(String monthname) {
+        this.monthname = monthname;
     }
 
-    public Seasons getSeasonId() {
-        return seasonId;
+    public Seasons getSeasonid() {
+        return seasonid;
     }
 
-    public void setSeasonId(Seasons seasonId) {
-        this.seasonId = seasonId;
-    }
-
-    @XmlTransient
-    public List<Majorpaddy> getMajorpaddyList() {
-        return majorpaddyList;
-    }
-
-    public void setMajorpaddyList(List<Majorpaddy> majorpaddyList) {
-        this.majorpaddyList = majorpaddyList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (monthId != null ? monthId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Months)) {
-            return false;
-        }
-        Months other = (Months) object;
-        if ((this.monthId == null && other.monthId != null) || (this.monthId != null && !this.monthId.equals(other.monthId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "edu.cdms.project.orm.Months[ monthId=" + monthId + " ]";
+    public void setSeasonid(Seasons seasonid) {
+        this.seasonid = seasonid;
     }
 
     @XmlTransient
@@ -130,12 +96,46 @@ public class Months implements Serializable {
     }
 
     @XmlTransient
+    public List<Majorpaddy> getMajorpaddyList() {
+        return majorpaddyList;
+    }
+
+    public void setMajorpaddyList(List<Majorpaddy> majorpaddyList) {
+        this.majorpaddyList = majorpaddyList;
+    }
+
+    @XmlTransient
     public List<Minorpaddy> getMinorpaddyList() {
         return minorpaddyList;
     }
 
     public void setMinorpaddyList(List<Minorpaddy> minorpaddyList) {
         this.minorpaddyList = minorpaddyList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (monthid != null ? monthid.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Months)) {
+            return false;
+        }
+        Months other = (Months) object;
+        if ((this.monthid == null && other.monthid != null) || (this.monthid != null && !this.monthid.equals(other.monthid))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "edu.cdms.project.orm.Months[ monthid=" + monthid + " ]";
     }
     
 }

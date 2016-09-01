@@ -7,7 +7,8 @@ package edu.cdms.project.service;
 
 import edu.cdms.project.dto.AdminLoginDTO;
 import edu.cdms.project.orm.Admin;
-import edu.cdms.project.orm.AiList;
+import edu.cdms.project.orm.Ailist;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,5 +17,7 @@ import edu.cdms.project.orm.AiList;
 public interface MemberService {
     public Admin getAdmin(AdminLoginDTO adminLoginDTO);
 
-    public boolean addAI(AiList aiList);
+    public boolean addAI(Ailist aiList);
+    
+    public ArrayList<Ailist> getAIList();
 }

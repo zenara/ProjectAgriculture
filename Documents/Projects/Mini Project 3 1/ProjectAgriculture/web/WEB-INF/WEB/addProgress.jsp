@@ -23,83 +23,83 @@
 
             <div class="col-md-3">
                 Major Scheme<br/><br/>
-                <form:form action="addrainfed" method="POST" modelAttribute="rainfed">
+            <form:form action="addmajor" method="POST" modelAttribute="major">
                 <%--year--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="yearId" placeholder="Year">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="yearid" placeholder="Year">
                     <c:forEach items="${years}" var="result">
-                        <form:option value="${result.yearId}">${result.yearRef}</form:option>
+                        <form:option value="${result.yearid}">${result.yearref}</form:option>
                     </c:forEach>
                 </form:select>
                 <%--month--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="monthId" placeholder="Month">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="monthid" placeholder="Month">
                     <c:forEach items="${months}" var="result">
-                        <form:option value="${result.monthId}">${result.monthName}</form:option>
+                        <form:option value="${result.monthid}">${result.monthname}</form:option>
                     </c:forEach>
                 </form:select>
                 <%--variety--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="varietyId" placeholder="Variety">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="varietyid" placeholder="Variety">
                     <c:forEach items="${varieties}" var="result">
-                        <form:option value="${result.varietyId}">${result.varietyName}</form:option>
+                        <form:option value="${result.varietyid}">${result.varietyname}</form:option>
                     </c:forEach>
                 </form:select>
 
                 <form:input class="form-control text-f" style="border-radius: 0px" path="id" type="hidden"/>
-                <form:input class="form-control text-f" style="border-radius: 0px" path="monthlyProgress" placeholder="Progress for the month"/>
-                <input class="btn"  style="margin-top: 5px;width: 100%;margin: 10px; background-color: #00cc99;color: white" type="submit" value="ADD">
+                <form:input class="form-control text-f" style="border-radius: 0px" path="monthlyprogress" placeholder="Progress for the month"/>
+                <input class="btn"  style="margin-top: 5px;width: 100%;margin: 10px; background-color: #00cc99;color: white" type="submit" value="ADD"/>
             </form:form>
         </div>
         <div class="col-md-3">
             Minor Scheme<br/><br/>
-            <form:form action="addrainfed" method="POST" modelAttribute="rainfed">
+            <form:form action="addminor" method="POST" modelAttribute="minor">
                 <%--year--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="yearId" placeholder="Year">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="yearid" placeholder="Year">
                     <c:forEach items="${years}" var="result">
-                        <form:option value="${result.yearId}">${result.yearRef}</form:option>
+                        <form:option value="${result.yearid}">${result.yearref}</form:option>
                     </c:forEach>
                 </form:select>
                 <%--month--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="monthId" placeholder="Month">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="monthid" placeholder="Month">
                     <c:forEach items="${months}" var="result">
-                        <form:option value="${result.monthId}">${result.monthName}</form:option>
+                        <form:option value="${result.monthid}">${result.monthname}</form:option>
                     </c:forEach>
                 </form:select>
                 <%--variety--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="varietyId" placeholder="Variety">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="varietyid" placeholder="Variety">
                     <c:forEach items="${varieties}" var="result">
-                        <form:option value="${result.varietyId}">${result.varietyName}</form:option>
+                        <form:option value="${result.varietyid}">${result.varietyname}</form:option>
                     </c:forEach>
                 </form:select>
 
                 <form:input class="form-control text-f" style="border-radius: 0px" path="id" type="hidden"/>
-                <form:input class="form-control text-f" style="border-radius: 0px" path="monthlyProgress" placeholder="Progress for the month"/>
-                <input class="btn"  style="margin-top: 5px;width: 100%;margin: 10px; background-color: #00cc99;color: white" type="submit" value="ADD">
+                <form:input class="form-control text-f" style="border-radius: 0px" path="monthlyprogress" placeholder="Progress for the month"/>
+                <input class="btn"  style="margin-top: 5px;width: 100%;margin: 10px; background-color: #00cc99;color: white" type="submit" value="ADD"/>
             </form:form>
         </div>
         <div class="col-md-3">
             Rainfed Scheme<br/><br/>
             <form:form action="addrainfed" method="POST" modelAttribute="rainfed">
                 <%--year--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="yearId" placeholder="Year">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="yearid" placeholder="Year">
                     <c:forEach items="${years}" var="result">
-                        <form:option value="${result.yearId}">${result.yearRef}</form:option>
+                        <form:option value="${result.yearid}">${result.yearref}</form:option>
                     </c:forEach>
                 </form:select>
                 <%--month--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="monthId" placeholder="Month">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="monthid" placeholder="Month">
                     <c:forEach items="${months}" var="result">
-                        <form:option value="${result.monthId}">${result.monthName}</form:option>
+                        <form:option value="${result.monthid}">${result.monthname}</form:option>
                     </c:forEach>
                 </form:select>
                 <%--variety--%>
-                <form:select class="form-control text-f" style="border-radius: 0px" path="varietyId" placeholder="Variety">
+                <form:select class="form-control text-f" style="border-radius: 0px" path="varietyid" placeholder="Variety">
                     <c:forEach items="${varieties}" var="result">
-                        <form:option value="${result.varietyId}">${result.varietyName}</form:option>
+                        <form:option value="${result.varietyid}">${result.varietyname}</form:option>
                     </c:forEach>
                 </form:select>
 
                 <form:input class="form-control text-f" style="border-radius: 0px" path="id" type="hidden"/>
-                <form:input class="form-control text-f" style="border-radius: 0px" path="monthlyProgress" placeholder="Progress for the month"/>
-                <input class="btn"  style="margin-top: 5px;width: 100%;margin: 10px; background-color: #00cc99;color: white" type="submit" value="ADD">
+                <form:input class="form-control text-f" style="border-radius: 0px" path="monthlyprogress" placeholder="Progress for the month"/>
+                <input class="btn"  style="margin-top: 5px;width: 100%;margin: 10px; background-color: #00cc99;color: white" type="submit" value="ADD"/>
             </form:form>
         </div>
         <div class="col-md-3">

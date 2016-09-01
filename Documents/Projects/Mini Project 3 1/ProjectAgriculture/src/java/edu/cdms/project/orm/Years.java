@@ -31,80 +31,46 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Years.findAll", query = "SELECT y FROM Years y"),
-    @NamedQuery(name = "Years.findByYearId", query = "SELECT y FROM Years y WHERE y.yearId = :yearId"),
-    @NamedQuery(name = "Years.findByYearRef", query = "SELECT y FROM Years y WHERE y.yearRef = :yearRef")})
+    @NamedQuery(name = "Years.findByYearid", query = "SELECT y FROM Years y WHERE y.yearid = :yearid"),
+    @NamedQuery(name = "Years.findByYearref", query = "SELECT y FROM Years y WHERE y.yearref = :yearref")})
 public class Years implements Serializable {
-    @OneToMany(mappedBy = "yearId", fetch = FetchType.LAZY)
-    private List<Rainfedpaddy> rainfedpaddyList;
-    @OneToMany(mappedBy = "yearId", fetch = FetchType.LAZY)
-    private List<Minorpaddy> minorpaddyList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "yearId")
-    private Integer yearId;
+    @Column(name = "yearid")
+    private Integer yearid;
     @Size(max = 20)
-    @Column(name = "yearRef")
-    private String yearRef;
-    @OneToMany(mappedBy = "yearId", fetch = FetchType.LAZY)
+    @Column(name = "yearref")
+    private String yearref;
+    @OneToMany(mappedBy = "yearid", fetch = FetchType.LAZY)
+    private List<Rainfedpaddy> rainfedpaddyList;
+    @OneToMany(mappedBy = "yearid", fetch = FetchType.LAZY)
     private List<Majorpaddy> majorpaddyList;
+    @OneToMany(mappedBy = "yearid", fetch = FetchType.LAZY)
+    private List<Minorpaddy> minorpaddyList;
 
     public Years() {
     }
 
-    public Years(Integer yearId) {
-        this.yearId = yearId;
+    public Years(Integer yearid) {
+        this.yearid = yearid;
     }
 
-    public Integer getYearId() {
-        return yearId;
+    public Integer getYearid() {
+        return yearid;
     }
 
-    public void setYearId(Integer yearId) {
-        this.yearId = yearId;
+    public void setYearid(Integer yearid) {
+        this.yearid = yearid;
     }
 
-    public String getYearRef() {
-        return yearRef;
+    public String getYearref() {
+        return yearref;
     }
 
-    public void setYearRef(String yearRef) {
-        this.yearRef = yearRef;
-    }
-
-    @XmlTransient
-    public List<Majorpaddy> getMajorpaddyList() {
-        return majorpaddyList;
-    }
-
-    public void setMajorpaddyList(List<Majorpaddy> majorpaddyList) {
-        this.majorpaddyList = majorpaddyList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (yearId != null ? yearId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Years)) {
-            return false;
-        }
-        Years other = (Years) object;
-        if ((this.yearId == null && other.yearId != null) || (this.yearId != null && !this.yearId.equals(other.yearId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "edu.cdms.project.orm.Years[ yearId=" + yearId + " ]";
+    public void setYearref(String yearref) {
+        this.yearref = yearref;
     }
 
     @XmlTransient
@@ -117,12 +83,46 @@ public class Years implements Serializable {
     }
 
     @XmlTransient
+    public List<Majorpaddy> getMajorpaddyList() {
+        return majorpaddyList;
+    }
+
+    public void setMajorpaddyList(List<Majorpaddy> majorpaddyList) {
+        this.majorpaddyList = majorpaddyList;
+    }
+
+    @XmlTransient
     public List<Minorpaddy> getMinorpaddyList() {
         return minorpaddyList;
     }
 
     public void setMinorpaddyList(List<Minorpaddy> minorpaddyList) {
         this.minorpaddyList = minorpaddyList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (yearid != null ? yearid.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Years)) {
+            return false;
+        }
+        Years other = (Years) object;
+        if ((this.yearid == null && other.yearid != null) || (this.yearid != null && !this.yearid.equals(other.yearid))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "edu.cdms.project.orm.Years[ yearid=" + yearid + " ]";
     }
     
 }

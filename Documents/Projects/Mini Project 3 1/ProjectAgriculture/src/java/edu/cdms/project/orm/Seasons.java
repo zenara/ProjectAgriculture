@@ -31,42 +31,42 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Seasons.findAll", query = "SELECT s FROM Seasons s"),
-    @NamedQuery(name = "Seasons.findBySeasonId", query = "SELECT s FROM Seasons s WHERE s.seasonId = :seasonId"),
-    @NamedQuery(name = "Seasons.findBySeasonName", query = "SELECT s FROM Seasons s WHERE s.seasonName = :seasonName")})
+    @NamedQuery(name = "Seasons.findBySeasonid", query = "SELECT s FROM Seasons s WHERE s.seasonid = :seasonid"),
+    @NamedQuery(name = "Seasons.findBySeasonname", query = "SELECT s FROM Seasons s WHERE s.seasonname = :seasonname")})
 public class Seasons implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "seasonId")
-    private Integer seasonId;
+    @Column(name = "seasonid")
+    private Integer seasonid;
     @Size(max = 20)
-    @Column(name = "seasonName")
-    private String seasonName;
-    @OneToMany(mappedBy = "seasonId", fetch = FetchType.LAZY)
+    @Column(name = "seasonname")
+    private String seasonname;
+    @OneToMany(mappedBy = "seasonid", fetch = FetchType.LAZY)
     private List<Months> monthsList;
 
     public Seasons() {
     }
 
-    public Seasons(Integer seasonId) {
-        this.seasonId = seasonId;
+    public Seasons(Integer seasonid) {
+        this.seasonid = seasonid;
     }
 
-    public Integer getSeasonId() {
-        return seasonId;
+    public Integer getSeasonid() {
+        return seasonid;
     }
 
-    public void setSeasonId(Integer seasonId) {
-        this.seasonId = seasonId;
+    public void setSeasonid(Integer seasonid) {
+        this.seasonid = seasonid;
     }
 
-    public String getSeasonName() {
-        return seasonName;
+    public String getSeasonname() {
+        return seasonname;
     }
 
-    public void setSeasonName(String seasonName) {
-        this.seasonName = seasonName;
+    public void setSeasonname(String seasonname) {
+        this.seasonname = seasonname;
     }
 
     @XmlTransient
@@ -81,7 +81,7 @@ public class Seasons implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (seasonId != null ? seasonId.hashCode() : 0);
+        hash += (seasonid != null ? seasonid.hashCode() : 0);
         return hash;
     }
 
@@ -92,7 +92,7 @@ public class Seasons implements Serializable {
             return false;
         }
         Seasons other = (Seasons) object;
-        if ((this.seasonId == null && other.seasonId != null) || (this.seasonId != null && !this.seasonId.equals(other.seasonId))) {
+        if ((this.seasonid == null && other.seasonid != null) || (this.seasonid != null && !this.seasonid.equals(other.seasonid))) {
             return false;
         }
         return true;
@@ -100,7 +100,7 @@ public class Seasons implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.cdms.project.orm.Seasons[ seasonId=" + seasonId + " ]";
+        return "edu.cdms.project.orm.Seasons[ seasonid=" + seasonid + " ]";
     }
     
 }

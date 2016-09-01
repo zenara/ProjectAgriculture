@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Rainfedpaddy.findAll", query = "SELECT r FROM Rainfedpaddy r"),
     @NamedQuery(name = "Rainfedpaddy.findById", query = "SELECT r FROM Rainfedpaddy r WHERE r.id = :id"),
-    @NamedQuery(name = "Rainfedpaddy.findByMonthlyProgress", query = "SELECT r FROM Rainfedpaddy r WHERE r.monthlyProgress = :monthlyProgress")})
+    @NamedQuery(name = "Rainfedpaddy.findByMonthlyprogress", query = "SELECT r FROM Rainfedpaddy r WHERE r.monthlyprogress = :monthlyprogress")})
 public class Rainfedpaddy implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,17 +39,17 @@ public class Rainfedpaddy implements Serializable {
     @Column(name = "id")
     private Integer id;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "monthlyProgress")
-    private Float monthlyProgress;
-    @JoinColumn(name = "yearId", referencedColumnName = "yearId")
+    @Column(name = "monthlyprogress")
+    private Float monthlyprogress;
+    @JoinColumn(name = "yearid", referencedColumnName = "yearid")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Years yearId;
-    @JoinColumn(name = "monthId", referencedColumnName = "monthId")
+    private Years yearid;
+    @JoinColumn(name = "monthid", referencedColumnName = "monthid")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Months monthId;
-    @JoinColumn(name = "varietyId", referencedColumnName = "varietyId")
+    private Months monthid;
+    @JoinColumn(name = "varietyid", referencedColumnName = "varietyid")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Variety varietyId;
+    private Variety varietyid;
 
     public Rainfedpaddy() {
     }
@@ -66,36 +66,36 @@ public class Rainfedpaddy implements Serializable {
         this.id = id;
     }
 
-    public Float getMonthlyProgress() {
-        return monthlyProgress;
+    public Float getMonthlyprogress() {
+        return monthlyprogress;
     }
 
-    public void setMonthlyProgress(Float monthlyProgress) {
-        this.monthlyProgress = monthlyProgress;
+    public void setMonthlyprogress(Float monthlyprogress) {
+        this.monthlyprogress = monthlyprogress;
     }
 
-    public Years getYearId() {
-        return yearId;
+    public Years getYearid() {
+        return yearid;
     }
 
-    public void setYearId(Years yearId) {
-        this.yearId = yearId;
+    public void setYearid(Years yearid) {
+        this.yearid = yearid;
     }
 
-    public Months getMonthId() {
-        return monthId;
+    public Months getMonthid() {
+        return monthid;
     }
 
-    public void setMonthId(Months monthId) {
-        this.monthId = monthId;
+    public void setMonthid(Months monthid) {
+        this.monthid = monthid;
     }
 
-    public Variety getVarietyId() {
-        return varietyId;
+    public Variety getVarietyid() {
+        return varietyid;
     }
 
-    public void setVarietyId(Variety varietyId) {
-        this.varietyId = varietyId;
+    public void setVarietyid(Variety varietyid) {
+        this.varietyid = varietyid;
     }
 
     @Override

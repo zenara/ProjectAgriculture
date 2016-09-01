@@ -5,6 +5,8 @@
  */
 package edu.cdms.project.dao;
 
+import edu.cdms.project.orm.Majorpaddy;
+import edu.cdms.project.orm.Minorpaddy;
 import edu.cdms.project.orm.Rainfedpaddy;
 import edu.cdms.project.orm.Variety;
 import edu.cdms.project.orm.Years;
@@ -24,5 +26,9 @@ public interface ProgressDataDAO {
     public ArrayList<Month> getMonthList();
     
     public ArrayList<Variety> getVarietyList();
+
+    public boolean addMajorProgress(Majorpaddy majorpaddy);
+
+    public boolean addMinorProgress(Minorpaddy minorpaddy);
     
 }

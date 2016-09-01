@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,7 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -32,80 +33,68 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ascenter.findAll", query = "SELECT a FROM Ascenter a"),
-    @NamedQuery(name = "Ascenter.findByAscId", query = "SELECT a FROM Ascenter a WHERE a.ascId = :ascId"),
-    @NamedQuery(name = "Ascenter.findByAscName", query = "SELECT a FROM Ascenter a WHERE a.ascName = :ascName")})
+    @NamedQuery(name = "Ascenter.findByAscid", query = "SELECT a FROM Ascenter a WHERE a.ascid = :ascid"),
+    @NamedQuery(name = "Ascenter.findByAscname", query = "SELECT a FROM Ascenter a WHERE a.ascname = :ascname")})
 public class Ascenter implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "ascId")
-    private String ascId;
+    @Column(name = "ascid")
+    private Integer ascid;
     @Size(max = 50)
-    @Column(name = "ascName")
-    private String ascName;
-    @OneToMany(mappedBy = "ascId", fetch = FetchType.LAZY)
-    private List<AiList> aiListList;
-    @OneToMany(mappedBy = "ascId", fetch = FetchType.LAZY)
-    private List<AiRange> aiRangeList;
-    @JoinColumn(name = "dsId", referencedColumnName = "dsId")
+    @Column(name = "ascname")
+    private String ascname;
+    @OneToMany(mappedBy = "ascid", fetch = FetchType.LAZY)
+    private List<Ailist> ailistList;
+    @JoinColumn(name = "dsid", referencedColumnName = "dsid")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Ds dsId;
+    private Ds dsid;
 
     public Ascenter() {
     }
 
-    public Ascenter(String ascId) {
-        this.ascId = ascId;
+    public Ascenter(Integer ascid) {
+        this.ascid = ascid;
     }
 
-    public String getAscId() {
-        return ascId;
+    public Integer getAscid() {
+        return ascid;
     }
 
-    public void setAscId(String ascId) {
-        this.ascId = ascId;
+    public void setAscid(Integer ascid) {
+        this.ascid = ascid;
     }
 
-    public String getAscName() {
-        return ascName;
+    public String getAscname() {
+        return ascname;
     }
 
-    public void setAscName(String ascName) {
-        this.ascName = ascName;
-    }
-
-    @XmlTransient
-    public List<AiList> getAiListList() {
-        return aiListList;
-    }
-
-    public void setAiListList(List<AiList> aiListList) {
-        this.aiListList = aiListList;
+    public void setAscname(String ascname) {
+        this.ascname = ascname;
     }
 
     @XmlTransient
-    public List<AiRange> getAiRangeList() {
-        return aiRangeList;
+    public List<Ailist> getAilistList() {
+        return ailistList;
     }
 
-    public void setAiRangeList(List<AiRange> aiRangeList) {
-        this.aiRangeList = aiRangeList;
+    public void setAilistList(List<Ailist> ailistList) {
+        this.ailistList = ailistList;
     }
 
-    public Ds getDsId() {
-        return dsId;
+    public Ds getDsid() {
+        return dsid;
     }
 
-    public void setDsId(Ds dsId) {
-        this.dsId = dsId;
+    public void setDsid(Ds dsid) {
+        this.dsid = dsid;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (ascId != null ? ascId.hashCode() : 0);
+        hash += (ascid != null ? ascid.hashCode() : 0);
         return hash;
     }
 
@@ -116,7 +105,7 @@ public class Ascenter implements Serializable {
             return false;
         }
         Ascenter other = (Ascenter) object;
-        if ((this.ascId == null && other.ascId != null) || (this.ascId != null && !this.ascId.equals(other.ascId))) {
+        if ((this.ascid == null && other.ascid != null) || (this.ascid != null && !this.ascid.equals(other.ascid))) {
             return false;
         }
         return true;
@@ -124,7 +113,7 @@ public class Ascenter implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.cdms.project.orm.Ascenter[ ascId=" + ascId + " ]";
+        return "edu.cdms.project.orm.Ascenter[ ascid=" + ascid + " ]";
     }
     
 }

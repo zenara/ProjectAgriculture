@@ -6,6 +6,8 @@
 package edu.cdms.project.dao.impl;
 
 import edu.cdms.project.dao.ProgressDataDAO;
+import edu.cdms.project.orm.Majorpaddy;
+import edu.cdms.project.orm.Minorpaddy;
 import edu.cdms.project.orm.Rainfedpaddy;
 import edu.cdms.project.orm.Variety;
 import edu.cdms.project.orm.Years;
@@ -67,6 +69,24 @@ public class ProgressDataDAOImpl implements ProgressDataDAO{
         session.getTransaction().commit();
         session.close();
         return varietys;
+    }
+
+    public boolean addMajorProgress(Majorpaddy majorpaddy) {
+        Session session=getSession();
+        session.beginTransaction();
+        session.save(majorpaddy);
+        session.getTransaction().commit();
+        session.close();
+        return false;
+    }
+
+    public boolean addMinorProgress(Minorpaddy minorpaddy) {
+        Session session=getSession();
+        session.beginTransaction();
+        session.save(minorpaddy);
+        session.getTransaction().commit();
+        session.close();
+        return false;
     }
     
 }

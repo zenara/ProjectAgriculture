@@ -33,91 +33,49 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Variety.findAll", query = "SELECT v FROM Variety v"),
-    @NamedQuery(name = "Variety.findByVarietyId", query = "SELECT v FROM Variety v WHERE v.varietyId = :varietyId"),
-    @NamedQuery(name = "Variety.findByVarietyName", query = "SELECT v FROM Variety v WHERE v.varietyName = :varietyName")})
+    @NamedQuery(name = "Variety.findByVarietyid", query = "SELECT v FROM Variety v WHERE v.varietyid = :varietyid"),
+    @NamedQuery(name = "Variety.findByVarietyname", query = "SELECT v FROM Variety v WHERE v.varietyname = :varietyname")})
 public class Variety implements Serializable {
-    @OneToMany(mappedBy = "varietyId", fetch = FetchType.LAZY)
-    private List<Rainfedpaddy> rainfedpaddyList;
-    @OneToMany(mappedBy = "varietyId", fetch = FetchType.LAZY)
-    private List<Minorpaddy> minorpaddyList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "varietyId")
-    private Integer varietyId;
+    @Column(name = "varietyid")
+    private Integer varietyid;
     @Size(max = 50)
-    @Column(name = "varietyName")
-    private String varietyName;
-    @JoinColumn(name = "ageGroupId", referencedColumnName = "ageGroupId")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private AgeGroup ageGroupId;
-    @OneToMany(mappedBy = "varietyId", fetch = FetchType.LAZY)
+    @Column(name = "varietyname")
+    private String varietyname;
+    @OneToMany(mappedBy = "varietyid", fetch = FetchType.LAZY)
+    private List<Rainfedpaddy> rainfedpaddyList;
+    @OneToMany(mappedBy = "varietyid", fetch = FetchType.LAZY)
     private List<Majorpaddy> majorpaddyList;
+    @JoinColumn(name = "agegroupid", referencedColumnName = "agegroupid")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Agegroup agegroupid;
+    @OneToMany(mappedBy = "varietyid", fetch = FetchType.LAZY)
+    private List<Minorpaddy> minorpaddyList;
 
     public Variety() {
     }
 
-    public Variety(Integer varietyId) {
-        this.varietyId = varietyId;
+    public Variety(Integer varietyid) {
+        this.varietyid = varietyid;
     }
 
-    public Integer getVarietyId() {
-        return varietyId;
+    public Integer getVarietyid() {
+        return varietyid;
     }
 
-    public void setVarietyId(Integer varietyId) {
-        this.varietyId = varietyId;
+    public void setVarietyid(Integer varietyid) {
+        this.varietyid = varietyid;
     }
 
-    public String getVarietyName() {
-        return varietyName;
+    public String getVarietyname() {
+        return varietyname;
     }
 
-    public void setVarietyName(String varietyName) {
-        this.varietyName = varietyName;
-    }
-
-    public AgeGroup getAgeGroupId() {
-        return ageGroupId;
-    }
-
-    public void setAgeGroupId(AgeGroup ageGroupId) {
-        this.ageGroupId = ageGroupId;
-    }
-
-    @XmlTransient
-    public List<Majorpaddy> getMajorpaddyList() {
-        return majorpaddyList;
-    }
-
-    public void setMajorpaddyList(List<Majorpaddy> majorpaddyList) {
-        this.majorpaddyList = majorpaddyList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (varietyId != null ? varietyId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Variety)) {
-            return false;
-        }
-        Variety other = (Variety) object;
-        if ((this.varietyId == null && other.varietyId != null) || (this.varietyId != null && !this.varietyId.equals(other.varietyId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "edu.cdms.project.orm.Variety[ varietyId=" + varietyId + " ]";
+    public void setVarietyname(String varietyname) {
+        this.varietyname = varietyname;
     }
 
     @XmlTransient
@@ -130,12 +88,54 @@ public class Variety implements Serializable {
     }
 
     @XmlTransient
+    public List<Majorpaddy> getMajorpaddyList() {
+        return majorpaddyList;
+    }
+
+    public void setMajorpaddyList(List<Majorpaddy> majorpaddyList) {
+        this.majorpaddyList = majorpaddyList;
+    }
+
+    public Agegroup getAgegroupid() {
+        return agegroupid;
+    }
+
+    public void setAgegroupid(Agegroup agegroupid) {
+        this.agegroupid = agegroupid;
+    }
+
+    @XmlTransient
     public List<Minorpaddy> getMinorpaddyList() {
         return minorpaddyList;
     }
 
     public void setMinorpaddyList(List<Minorpaddy> minorpaddyList) {
         this.minorpaddyList = minorpaddyList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (varietyid != null ? varietyid.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Variety)) {
+            return false;
+        }
+        Variety other = (Variety) object;
+        if ((this.varietyid == null && other.varietyid != null) || (this.varietyid != null && !this.varietyid.equals(other.varietyid))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "edu.cdms.project.orm.Variety[ varietyid=" + varietyid + " ]";
     }
     
 }

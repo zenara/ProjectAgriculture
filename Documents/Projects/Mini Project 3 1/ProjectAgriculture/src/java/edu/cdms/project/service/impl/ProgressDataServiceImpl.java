@@ -6,6 +6,8 @@
 package edu.cdms.project.service.impl;
 
 import edu.cdms.project.dao.ProgressDataDAO;
+import edu.cdms.project.orm.Majorpaddy;
+import edu.cdms.project.orm.Minorpaddy;
 import edu.cdms.project.orm.Rainfedpaddy;
 import edu.cdms.project.orm.Variety;
 import edu.cdms.project.orm.Years;
@@ -38,5 +40,13 @@ public class ProgressDataServiceImpl implements ProgressDataService{
 
     public ArrayList<Variety> getVarietyList() {
         return progressDataDAO.getVarietyList();
+    }
+
+    public boolean addMajorProgress(Majorpaddy majorpaddy) {
+        return progressDataDAO.addMajorProgress(majorpaddy);
+    }
+
+    public boolean addMinorProgress(Minorpaddy minorpaddy) {
+        return progressDataDAO.addMinorProgress(minorpaddy);
     }
 }

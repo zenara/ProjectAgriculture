@@ -6,9 +6,9 @@
 package edu.cdms.project.contrl;
 
 import edu.cdms.project.dto.AdminLoginDTO;
-import edu.cdms.project.orm.AdaZone;
+import edu.cdms.project.orm.Adazone;
 import edu.cdms.project.orm.Admin;
-import edu.cdms.project.orm.AiList;
+import edu.cdms.project.orm.Ailist;
 import edu.cdms.project.orm.Ascenter;
 import edu.cdms.project.orm.District;
 import edu.cdms.project.orm.Ds;
@@ -29,44 +29,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/")
 public class MemberController {
-    
+
     @Autowired
     private MemberService memberService;
-    
+
     @Autowired
     private BranchService branchService;
-    
+
     @RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
-    public String adminlogin(ModelMap map){
-        AdminLoginDTO adminLoginDTO=new AdminLoginDTO();
+    public String adminlogin(ModelMap map) {
+        AdminLoginDTO adminLoginDTO = new AdminLoginDTO();
         map.addAttribute("adminlogin", adminLoginDTO);
         return "adminLogin";
     }
-    
+
     @RequestMapping(value = "/checkadmin", method = RequestMethod.POST)
-    public String checkadmin(@Valid AdminLoginDTO adminLoginDTO, ModelMap map){
-        String enteredUName=adminLoginDTO.getUsername();
-        Admin admin=memberService.getAdmin(adminLoginDTO);
-        if(admin != null){
-            String enteredPass=adminLoginDTO.getPassword();
-            if(enteredPass.equals(admin.getPassword())){
-                AiList aiList=new AiList();
-                AdaZone adaZone=new AdaZone();
+    public String checkadmin(@Valid AdminLoginDTO adminLoginDTO, ModelMap map) {
+        String enteredUName = adminLoginDTO.getUsername();
+        Admin admin = memberService.getAdmin(adminLoginDTO);
+        if (admin != null) {
+            String enteredPass = adminLoginDTO.getPassword();
+            if (enteredPass.equals(admin.getPassword())) {
+                Ailist aiList = new Ailist();
+                Adazone adaZone = new Adazone();
                 map.addAttribute("AI", aiList);
-                ArrayList<AdaZone> adaZones=branchService.getADAList();
+                ArrayList<Adazone> adaZones = branchService.getADAList();
                 map.addAttribute("ada", adaZone);
                 map.addAttribute("adas", adaZones);
-                District district=new District();
+                District district = new District();
                 map.addAttribute("district", district);
-                ArrayList<District> districts=branchService.getDistrictList();
+                ArrayList<District> districts = branchService.getDistrictList();
                 map.addAttribute("districts", districts);
-                Ds ds=new Ds();                
+                Ds ds = new Ds();
                 map.addAttribute("ds", ds);
-                ArrayList<Ds> dses=branchService.getDsList();
+                ArrayList<Ds> dses = branchService.getDsList();
                 map.addAttribute("dses", dses);
-                Ascenter ascenter=new Ascenter();
+                Ascenter ascenter = new Ascenter();
                 map.addAttribute("ascenter", ascenter);
-                ArrayList<Ascenter> ascenters=branchService.getAscenterList();
+                ArrayList<Ascenter> ascenters = branchService.getAscenterList();
                 map.addAttribute("centers", ascenters);
                 return "addAI";
             }
@@ -75,30 +75,34 @@ public class MemberController {
         map.addAttribute("adminlogin", adminLoginDTO);
         return "adminLogin";
     }
-    
+
     @RequestMapping(value = "/addAI", method = RequestMethod.POST)
-    public String addAI(@Valid AiList aiList, ModelMap map){
-        memberService.addAI(aiList);
-        AdaZone adaZone=new AdaZone();
-        map.addAttribute("AI", aiList);
-        ArrayList<AdaZone> adaZones=branchService.getADAList();
-        map.addAttribute("ada", adaZone);
-        map.addAttribute("adas", adaZones);
-        District district=new District();
-        map.addAttribute("district", district);
-        ArrayList<District> districts=branchService.getDistrictList();
-        map.addAttribute("districts", districts);
-        Ds ds=new Ds();                
-        map.addAttribute("ds", ds);
-        ArrayList<Ds> dses=branchService.getDsList();
-        map.addAttribute("dses", dses);
-        Ascenter ascenter=new Ascenter();
-        map.addAttribute("ascenter", ascenter);
-        ArrayList<Ascenter> ascenters=branchService.getAscenterList();
-        map.addAttribute("centers", ascenters);
+    public String addAI(@Valid Ailist aiList, ModelMap map) {
+        if(aiList.getNic().matches("/^[0-9]{9}[vVxX]$/")){
+            map.addAttribute("nicEr", "error");
+        }
+        try {
+            memberService.addAI(aiList);
+        } catch (Exception e) {
+            map.addAttribute("msg", "error");
+        }
+            Adazone adaZone = new Adazone();
+            map.addAttribute("AI", aiList);
+            ArrayList<Adazone> adaZones = branchService.getADAList();
+            map.addAttribute("ada", adaZone);
+            map.addAttribute("adas", adaZones);
+            District district = new District();
+            map.addAttribute("district", district);
+            ArrayList<District> districts = branchService.getDistrictList();
+            map.addAttribute("districts", districts);
+            Ds ds = new Ds();
+            map.addAttribute("ds", ds);
+            ArrayList<Ds> dses = branchService.getDsList();
+            map.addAttribute("dses", dses);
+            Ascenter ascenter = new Ascenter();
+            map.addAttribute("ascenter", ascenter);
+            ArrayList<Ascenter> ascenters = branchService.getAscenterList();
+            map.addAttribute("centers", ascenters);
         return "addAI";
     }
-    
-    
-    
-    }
+}

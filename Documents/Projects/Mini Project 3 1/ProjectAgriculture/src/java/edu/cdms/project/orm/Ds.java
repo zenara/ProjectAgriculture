@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,7 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -32,57 +33,64 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ds.findAll", query = "SELECT d FROM Ds d"),
-    @NamedQuery(name = "Ds.findByDsId", query = "SELECT d FROM Ds d WHERE d.dsId = :dsId"),
-    @NamedQuery(name = "Ds.findByDsName", query = "SELECT d FROM Ds d WHERE d.dsName = :dsName")})
+    @NamedQuery(name = "Ds.findByDsid", query = "SELECT d FROM Ds d WHERE d.dsid = :dsid"),
+    @NamedQuery(name = "Ds.findByDsname", query = "SELECT d FROM Ds d WHERE d.dsname = :dsname")})
 public class Ds implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "dsId")
-    private String dsId;
+    @Column(name = "dsid")
+    private Integer dsid;
     @Size(max = 50)
-    @Column(name = "dsName")
-    private String dsName;
-    @OneToMany(mappedBy = "dsId", fetch = FetchType.LAZY)
-    private List<AiList> aiListList;
-    @OneToMany(mappedBy = "dsId", fetch = FetchType.LAZY)
-    private List<Ascenter> ascenterList;
-    @JoinColumn(name = "districtId", referencedColumnName = "districtId")
+    @Column(name = "dsname")
+    private String dsname;
+    @OneToMany(mappedBy = "dsid", fetch = FetchType.LAZY)
+    private List<Ailist> ailistList;
+    @JoinColumn(name = "districtid", referencedColumnName = "districtid")
     @ManyToOne(fetch = FetchType.LAZY)
-    private District districtId;
+    private District districtid;
+    @OneToMany(mappedBy = "dsid", fetch = FetchType.LAZY)
+    private List<Ascenter> ascenterList;
 
     public Ds() {
     }
 
-    public Ds(String dsId) {
-        this.dsId = dsId;
+    public Ds(Integer dsid) {
+        this.dsid = dsid;
     }
 
-    public String getDsId() {
-        return dsId;
+    public Integer getDsid() {
+        return dsid;
     }
 
-    public void setDsId(String dsId) {
-        this.dsId = dsId;
+    public void setDsid(Integer dsid) {
+        this.dsid = dsid;
     }
 
-    public String getDsName() {
-        return dsName;
+    public String getDsname() {
+        return dsname;
     }
 
-    public void setDsName(String dsName) {
-        this.dsName = dsName;
+    public void setDsname(String dsname) {
+        this.dsname = dsname;
     }
 
     @XmlTransient
-    public List<AiList> getAiListList() {
-        return aiListList;
+    public List<Ailist> getAilistList() {
+        return ailistList;
     }
 
-    public void setAiListList(List<AiList> aiListList) {
-        this.aiListList = aiListList;
+    public void setAilistList(List<Ailist> ailistList) {
+        this.ailistList = ailistList;
+    }
+
+    public District getDistrictid() {
+        return districtid;
+    }
+
+    public void setDistrictid(District districtid) {
+        this.districtid = districtid;
     }
 
     @XmlTransient
@@ -94,18 +102,10 @@ public class Ds implements Serializable {
         this.ascenterList = ascenterList;
     }
 
-    public District getDistrictId() {
-        return districtId;
-    }
-
-    public void setDistrictId(District districtId) {
-        this.districtId = districtId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (dsId != null ? dsId.hashCode() : 0);
+        hash += (dsid != null ? dsid.hashCode() : 0);
         return hash;
     }
 
@@ -116,7 +116,7 @@ public class Ds implements Serializable {
             return false;
         }
         Ds other = (Ds) object;
-        if ((this.dsId == null && other.dsId != null) || (this.dsId != null && !this.dsId.equals(other.dsId))) {
+        if ((this.dsid == null && other.dsid != null) || (this.dsid != null && !this.dsid.equals(other.dsid))) {
             return false;
         }
         return true;
@@ -124,7 +124,7 @@ public class Ds implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.cdms.project.orm.Ds[ dsId=" + dsId + " ]";
+        return "edu.cdms.project.orm.Ds[ dsid=" + dsid + " ]";
     }
     
 }

@@ -5,6 +5,8 @@
  */
 package edu.cdms.project.service;
 
+import edu.cdms.project.orm.Majorpaddy;
+import edu.cdms.project.orm.Minorpaddy;
 import edu.cdms.project.orm.Rainfedpaddy;
 import edu.cdms.project.orm.Variety;
 import edu.cdms.project.orm.Years;
@@ -17,6 +19,10 @@ import java.util.ArrayList;
  */
 public interface ProgressDataService {
     public boolean addRainfedProgress(Rainfedpaddy rainfedpaddy);
+    
+    public boolean addMajorProgress(Majorpaddy majorpaddy);
+    
+    public boolean addMinorProgress(Minorpaddy minorpaddy);
     
     public ArrayList<Years> getYearList();
     

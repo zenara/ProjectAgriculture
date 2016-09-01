@@ -109,8 +109,8 @@
 
                         The researchers, mostly breeders who developed or identified the germplasm or new line will present all the required data and chairperson allows discussing the data with the audience. At last the chairperson will recommend/release or reject the variety considering all the comments. 
                     </p><br/>
-                    <form action="AddProgress">
-                    <button type="submit" class="btn btn-default btn-lg">Get in Touch</button>
+                    <form action="AddsProgress">
+                        <button type="submit" class="btn btn-default btn-lg" style="background-color: #00cc99;">Get in Touch</button>
                     </form>
                 </div>
                 <div class="col-sm-4"><br/>
@@ -118,6 +118,27 @@
                 </div>
             </div>
         </div>
+
+        <div id="staff" class="container-fluid">
+            <div class="row">
+                <div class="col-md-11">
+                    <h5>Our Department Staff</h5><br/>
+                    <p>
+                        Our Department is highly structured to provide the best for the farmers. The Development Division is implementing indigenous food production increasing programmes with the objective of ensuring food security through local food productions and minimizing import cost on food crops to fulfill the role of the Ministry of Agriculture towards building a self sufficient country through agricultural revival. In this endeavor special affection has been paid on cultivation of crops, vegetable and fruit. This Division is also offending to planning, policy formulation and implementation aspects relating to agricultural development. <br/>
+                        Main Agriculture programmes being implemented to cover the fields related to agriculture technology and natural resources management through out the island are co-ordinated by this Division functioning under the supervision of Additional Secretary (Agriculture Technology). Agriculture Technology, Natural Resources Management and Project Division are coming under his supervision. The functions and responsibilities of the Division are as follows.
+                    </p><br/>
+                    <form action="viewAIList">
+                        <button type="submit" class="btn btn-default btn-lg" style="background-color: #00cc99;">Our AI crew</button>
+                    </form>
+                </div>
+                <div class="col-sm-1"><br/>
+                    <a href="adminlogin" class="right btn-default btn-lg">
+                        <span class="glyphicon glyphicon-cog" style="font-size:1.8em;"></span></a>
+                </div>
+            </div>
+        </div>
+
+
         <div id="contact" class="container-fluid bg-grey">
             <h2 class="text-center">CONTACT</h2>
             <div class="row">

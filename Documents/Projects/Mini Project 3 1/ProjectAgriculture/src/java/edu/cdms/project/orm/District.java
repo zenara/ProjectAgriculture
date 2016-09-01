@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,7 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -32,65 +33,56 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "District.findAll", query = "SELECT d FROM District d"),
-    @NamedQuery(name = "District.findByDistrictId", query = "SELECT d FROM District d WHERE d.districtId = :districtId"),
-    @NamedQuery(name = "District.findByDistrictName", query = "SELECT d FROM District d WHERE d.districtName = :districtName")})
+    @NamedQuery(name = "District.findByDistrictid", query = "SELECT d FROM District d WHERE d.districtid = :districtid"),
+    @NamedQuery(name = "District.findByDistrictname", query = "SELECT d FROM District d WHERE d.districtname = :districtname")})
 public class District implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "districtId")
-    private String districtId;
+    @Column(name = "districtid")
+    private Integer districtid;
     @Size(max = 50)
-    @Column(name = "districtName")
-    private String districtName;
-    @OneToMany(mappedBy = "districtId", fetch = FetchType.LAZY)
-    private List<AiList> aiListList;
-    @JoinColumn(name = "adaId", referencedColumnName = "adaId")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private AdaZone adaId;
-    @OneToMany(mappedBy = "districtId", fetch = FetchType.LAZY)
+    @Column(name = "districtname")
+    private String districtname;
+    @OneToMany(mappedBy = "districtid", fetch = FetchType.LAZY)
+    private List<Ailist> ailistList;
+    @OneToMany(mappedBy = "districtid", fetch = FetchType.LAZY)
     private List<Ds> dsList;
+    @JoinColumn(name = "adaid", referencedColumnName = "adaid")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Adazone adaid;
 
     public District() {
     }
 
-    public District(String districtId) {
-        this.districtId = districtId;
+    public District(Integer districtid) {
+        this.districtid = districtid;
     }
 
-    public String getDistrictId() {
-        return districtId;
+    public Integer getDistrictid() {
+        return districtid;
     }
 
-    public void setDistrictId(String districtId) {
-        this.districtId = districtId;
+    public void setDistrictid(Integer districtid) {
+        this.districtid = districtid;
     }
 
-    public String getDistrictName() {
-        return districtName;
+    public String getDistrictname() {
+        return districtname;
     }
 
-    public void setDistrictName(String districtName) {
-        this.districtName = districtName;
+    public void setDistrictname(String districtname) {
+        this.districtname = districtname;
     }
 
     @XmlTransient
-    public List<AiList> getAiListList() {
-        return aiListList;
+    public List<Ailist> getAilistList() {
+        return ailistList;
     }
 
-    public void setAiListList(List<AiList> aiListList) {
-        this.aiListList = aiListList;
-    }
-
-    public AdaZone getAdaId() {
-        return adaId;
-    }
-
-    public void setAdaId(AdaZone adaId) {
-        this.adaId = adaId;
+    public void setAilistList(List<Ailist> ailistList) {
+        this.ailistList = ailistList;
     }
 
     @XmlTransient
@@ -102,10 +94,18 @@ public class District implements Serializable {
         this.dsList = dsList;
     }
 
+    public Adazone getAdaid() {
+        return adaid;
+    }
+
+    public void setAdaid(Adazone adaid) {
+        this.adaid = adaid;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (districtId != null ? districtId.hashCode() : 0);
+        hash += (districtid != null ? districtid.hashCode() : 0);
         return hash;
     }
 
@@ -116,7 +116,7 @@ public class District implements Serializable {
             return false;
         }
         District other = (District) object;
-        if ((this.districtId == null && other.districtId != null) || (this.districtId != null && !this.districtId.equals(other.districtId))) {
+        if ((this.districtid == null && other.districtid != null) || (this.districtid != null && !this.districtid.equals(other.districtid))) {
             return false;
         }
         return true;
@@ -124,7 +124,7 @@ public class District implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.cdms.project.orm.District[ districtId=" + districtId + " ]";
+        return "edu.cdms.project.orm.District[ districtid=" + districtid + " ]";
     }
     
 }
