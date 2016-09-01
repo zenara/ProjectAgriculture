@@ -9,6 +9,14 @@
     <class>edu.cdms.project.orm.Ds</class>
     <class>edu.cdms.project.orm.AiRange</class>
     <class>edu.cdms.project.orm.AiList</class>
+    <class>edu.cdms.project.orm.Months</class>
+    <class>edu.cdms.project.orm.Variety</class>
+    <class>edu.cdms.project.orm.Majorpaddy</class>
+    <class>edu.cdms.project.orm.Seasons</class>
+    <class>edu.cdms.project.orm.AgeGroup</class>
+    <class>edu.cdms.project.orm.Years</class>
+    <class>edu.cdms.project.orm.Rainfedpaddy</class>
+    <class>edu.cdms.project.orm.Minorpaddy</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cdms?zeroDateTimeBehavior=convertToNull"/>

@@ -99,6 +99,6 @@ public class MemberController {
         return "addAI";
     }
     
-
     
-}
+    
+    }

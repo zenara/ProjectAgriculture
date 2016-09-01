@@ -14,6 +14,10 @@
         <link href="CSS/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/MainStyle.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/materializeExtracted.css" rel="stylesheet" type="text/css"/>
+        <link href="CSS/extracted.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+        
         
         <title>Add AI</title>
     </head>
@@ -21,6 +25,7 @@
         <div id="addai" class="container row">
         <div class="col-md-4">
         <jsp:include page="../../PAGES/top.jsp"></jsp:include>
+        <h6><b>Add Agricultural Instructors</b></h6>
         
         <form:form action="addAI" method="POST" modelAttribute="AI">
             <br/><label>ADA Zone</label>
@@ -73,14 +78,14 @@
             
             
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             
             <form:form action="addAda" method="POST" modelAttribute="ada">
                 <form:input path="adaId" type="hidden" value="0001"></form:input>
                 <form:input path="adaName" placeholder="ADA Name:"></form:input>
-                <button type="submit" class="btn btn-info">ADD</button>
+                <button type="submit" class="btn btn-app"><i class="material-icons md-18">mode_edit</i></button>
             </form:form>
-                
+                <br/>
         <form:form action="addDistrict" method="POST" modelAttribute="district">
             <form:select class="form-control" style="border-radius: 0px" placeholder="ADA Zone" path="adaId">
                 <c:forEach items="${adas}" var="result">
@@ -89,9 +94,9 @@
             </form:select>
                 <form:input path="districtId" type="hidden" value="0001"></form:input>
                 <form:input path="districtName" placeholder="District Name:"></form:input>
-                <button type="submit">ADD</button>
+                <button type="submit" class="btn btn-app"><i class="material-icons md-18">mode_edit</i></button>
         </form:form>
-                
+                <br/>
                 <form:form action="addDS" method="POST" modelAttribute="ds">
             <form:select class="form-control" style="border-radius: 0px" placeholder="District" path="districtId">
                 <c:forEach items="${districts}" var="result">
@@ -100,9 +105,9 @@
             </form:select>
                 <form:input path="dsId" type="hidden" value="0001"></form:input>
                 <form:input path="dsName" placeholder="Divisional Secretarian:"></form:input>
-                <button type="submit">ADD</button>
+                <button type="submit" class="btn btn-app"><i class="material-icons md-18">mode_edit</i></button>
         </form:form>
-                
+                <br/>
                 <form:form action="addAscenter" method="POST" modelAttribute="ascenter">
             <form:select class="form-control" style="border-radius: 0px" placeholder="ASCenter" path="dsId">
                 <c:forEach items="${dses}" var="result">
@@ -111,7 +116,7 @@
             </form:select>
                 <form:input path="ascId" type="hidden" value="0001"></form:input>
                 <form:input path="ascName" placeholder="Divisional Secretarian:"></form:input>
-                <button type="submit">ADD</button>
+                <button type="submit" class="btn btn-app"><i class="material-icons md-18">mode_edit</i></button>
         </form:form>
         </div>
         </div>
