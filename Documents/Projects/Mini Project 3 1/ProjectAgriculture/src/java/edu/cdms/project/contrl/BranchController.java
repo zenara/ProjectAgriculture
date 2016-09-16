@@ -45,6 +45,8 @@ public class BranchController {
         map.addAttribute("district", district);
         Ds ds=new Ds();
         map.addAttribute("ds", ds);
+        ArrayList<Ds> dses=branchService.getDsList();
+        map.addAttribute("dses", dses);
         Ascenter ascenter=new Ascenter();
         map.addAttribute("ascenter", ascenter);
         ArrayList<Ascenter> ascenters=branchService.getAscenterList();
@@ -67,6 +69,8 @@ public class BranchController {
         map.addAttribute("district", district);
         Ds ds=new Ds();
         map.addAttribute("ds", ds);
+        ArrayList<Ds> dses=branchService.getDsList();
+        map.addAttribute("dses", dses);
         Ascenter ascenter=new Ascenter();
         map.addAttribute("ascenter", ascenter);
         ArrayList<Ascenter> ascenters=branchService.getAscenterList();

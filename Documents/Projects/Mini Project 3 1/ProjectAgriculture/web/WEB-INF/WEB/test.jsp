@@ -14,7 +14,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1><br/>
         <form:form action="addDistrict" method="POST" modelAttribute="district">
                     <form:select class="form-control" style="border-radius: 0px" placeholder="ADA Zone" path="adaid">
                         <c:forEach items="${adas}" var="result">
